@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+class Advisor{
+	string advisor;
+	string *mentess_list;
+	const int mentess_count;
+	public:
+		Advisor(string n,int co):advisor(n),mentess_count(co){
+			mentess_list=new string[mentess_count];
+		}
+		void add_mentess(string * list)
+		{
+			for(int i=0;i<mentess_count;i++)
+			{
+				mentess_list[i]=list[i];
+			}
+		}
+		void display()
+		{
+			
+			for(int i=0;i<mentess_count;i++)
+			{
+				cout<<" NAME "<<i+1<<mentess_list[i]<<endl;
+			}
+			cout<<endl;
+			cout<<" ADVISOR :: "<<advisor<<endl;
+		}
+		~Advisor()
+		{
+			delete []mentess_list;
+			mentess_list=nullptr;
+		}
+};
+int main()
+{
+	string student_list[]={" AHMED "," Ali ", " rohail "," abu bakr "," sabbi "};
+	string ad_name="DR Ihthsham Ali ";
+	Advisor a1(ad_name,5);
+	a1.add_mentess(student_list);
+	a1.display();
+	
+	return 0;
+}
